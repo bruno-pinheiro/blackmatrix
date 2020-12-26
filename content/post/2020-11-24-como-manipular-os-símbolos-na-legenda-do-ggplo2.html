@@ -50,33 +50,33 @@ df %&gt;% head %&gt;% knitr::kable()</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">1.854917</td>
-<td align="right">96.66528</td>
+<td align="right">1.546523</td>
+<td align="right">75.55293</td>
 <td align="left">homem</td>
 </tr>
 <tr class="even">
-<td align="right">1.660441</td>
-<td align="right">54.59116</td>
+<td align="right">1.570222</td>
+<td align="right">63.51576</td>
 <td align="left">homem</td>
 </tr>
 <tr class="odd">
-<td align="right">1.783646</td>
-<td align="right">84.23611</td>
+<td align="right">1.334239</td>
+<td align="right">85.57080</td>
 <td align="left">homem</td>
 </tr>
 <tr class="even">
-<td align="right">2.062874</td>
-<td align="right">74.09323</td>
+<td align="right">1.327231</td>
+<td align="right">53.31462</td>
 <td align="left">homem</td>
 </tr>
 <tr class="odd">
-<td align="right">1.388467</td>
-<td align="right">87.35626</td>
+<td align="right">1.129879</td>
+<td align="right">24.20772</td>
 <td align="left">homem</td>
 </tr>
 <tr class="even">
-<td align="right">0.955791</td>
-<td align="right">53.37666</td>
+<td align="right">1.372507</td>
+<td align="right">68.54040</td>
 <td align="left">homem</td>
 </tr>
 </tbody>
@@ -99,7 +99,7 @@ theme_set(
   geom_point(aes(altura, peso, colour = tipo)) +
   scale_colour_brewer(palette = &quot;Set1&quot;, NULL)
 p1</code></pre>
-<p><img src="/post/2020-11-24-como-manipular-os-s%C3%ADmbolos-na-legenda-do-ggplo2_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="/blackmatrix/post/2020-11-24-como-manipular-os-s%C3%ADmbolos-na-legenda-do-ggplo2_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>Já temos um gráfico bastante interessante, porém as legendas não estão adequadamente formatadas, de modo que tanto as linhas estão cortadas por um círculo como o ponto está cortado por uma linha. Queremos adequar os símbolos para que as linhas sejam representadas por linhas e o ponto apenas por um ponto.</p>
 <div id="manipular-símbolos-da-legenda" class="section level3">
 <h3>Manipular símbolos da legenda</h3>
@@ -108,7 +108,7 @@ p1</code></pre>
   guides(color = guide_legend(
     override.aes = list(pch=c(16, 16, NA), linetype=c(0, 0, 1))
     ))</code></pre>
-<p><img src="/post/2020-11-24-como-manipular-os-s%C3%ADmbolos-na-legenda-do-ggplo2_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="/blackmatrix/post/2020-11-24-como-manipular-os-s%C3%ADmbolos-na-legenda-do-ggplo2_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Pronto, agora sim! O resultado é o gráfico que queríamos, com os símbolos da legenda corretamente formatados.</p>
 </div>
 </div>
