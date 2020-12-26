@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>legendas on A Hugo website</title>
+    <link>/tags/legendas/</link>
+    <description>Recent content in legendas on A Hugo website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 24 Nov 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/legendas/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Como manipular os símbolos na legenda do ggplot2</title>
+      <link>/2020/11/24/como-manipular-os-s%C3%ADmbolos-na-legenda-do-ggplot2/</link>
+      <pubDate>Tue, 24 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/11/24/como-manipular-os-s%C3%ADmbolos-na-legenda-do-ggplot2/</guid>
+      <description>Problema Você criou um gráfico com ggplot2 com mais de um tipo de geom (linha e ponto, por exemplo) e a legenda não corresponde às formas que compõem a visualização. É preciso melhorar a interpretabilidade e por isso você quer arrumar a legenda.
+O pacote ggplot2 é provavelmente o mais utilizado para visualização de dados no R. É um pacote muito robusto e com inúmeras possibilidades tanto gráficas como estéticas.</description>
+    </item>
+    
+  </channel>
+</rss>

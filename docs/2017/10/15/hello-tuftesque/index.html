@@ -3,13 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 
 <head>
-<title>Black Matrix - Hello Tuftesque</title>
+<title>A Hugo website - Hello Tuftesque</title>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="keywords" content="">
-<meta name="author" content="Black Matrix">
+<meta name="author" content="A Hugo website">
 <meta name="generator" content="Hugo 0.74.3" />
 
   
@@ -101,9 +101,11 @@ body {
 
 
 <section>
+<link href="/rmarkdown-libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/anchor-sections/anchor-sections.js"></script>
 
 
-<p><em>This is an abridged version of the blogpost <a href="http://livefreeordichotomize.com/2017/07/13/introducing-the-tuftesque-blogdown-theme/">Introducing The Tuftesque Blogdown Theme</a> on <a href="livefreeordichotomize.com" class="uri">livefreeordichotomize.com</a>.</em></p>
+<p><em>This is an abridged version of the blogpost <a href="http://livefreeordichotomize.com/2017/07/13/introducing-the-tuftesque-blogdown-theme/">Introducing The Tuftesque Blogdown Theme</a> on <a href="livefreeordichotomize.com">livefreeordichotomize.com</a>.</em></p>
 <div id="customizing" class="section level1">
 <h1>Customizing</h1>
 <p>It would be pretty lame if that was it, wouldn’t it? Fear not, you can tinker with it to make it your own.</p>
@@ -111,13 +113,13 @@ body {
 <h2>Side Notes:</h2>
 <p>We all know why you’re here: the sidenotes. This is rather easy. Just make sure you have the <code>tufte</code> package installed and then, in an inline r chunk, wherever you want to put a side note call the following.</p>
 <pre><code>tufte::margin_note(&quot;This is a margin note&quot;)</code></pre>
-<p>The above produces the following: <label for="tufte-mn-ygsglhleri" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-tufte-mn-ygsglhleri" class="margin-toggle"><span class="marginnote">This is a margin note</span></p>
+<p>The above produces the following: <label for="tufte-mn-" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-" class="margin-toggle"><span class="marginnote">This is a margin note</span></p>
 <p>You can place just about anything in this that you would normally put in markdown so go crazy.</p>
 </div>
 <div id="summary-text" class="section level2">
 <h2>Summary Text:</h2>
 <p>You can place a description of a post on the home page to give your readers a little bit more info on what a post is about. To do this just add the field <code>excerpt</code> to your posts header:</p>
-<p><label for="tufte-mn-ksftnfclnb" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-tufte-mn-ksftnfclnb" class="margin-toggle"><span class="marginnote">This is the header of this article. The except shows up on the home page.</span></p>
+<p><label for="tufte-mn-" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-" class="margin-toggle"><span class="marginnote">This is the header of this article. The except shows up on the home page.</span></p>
 <pre><code>title: &quot;Introducing the tuftesque blogdown theme&quot;
 author: &quot;Nick Strayer&quot;
 date: &#39;2017-07-13&#39;
@@ -130,7 +132,7 @@ excerpt: &quot;Our blog&#39;s theme started as the theme hugo-tufte but has sens
 <p>You’re not a giant Tintin fan? Well lucky for you changes can be made to the theme to make it more “you”.</p>
 <p>You will notice in the directory set up for you by blogdown there is a file called <code>config.toml</code>. Open this up real quick and locate the where it says <code>[params.logo]</code> (line 35 if a fresh blogdown install).</p>
 <p>Under this you will see the parameter <code>url</code>. You can set this to be whatever your heart desires. Say you’re more of a parrot person, no problem.</p>
-<p><label for="tufte-mn-enddankyub" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-tufte-mn-enddankyub" class="margin-toggle"><span class="marginnote"><strong>/config.toml</strong></span></p>
+<p><label for="tufte-mn-" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-" class="margin-toggle"><span class="marginnote"><strong>/config.toml</strong></span></p>
 <pre><code>[params]
 ...
   [params.logo]
@@ -141,7 +143,9 @@ excerpt: &quot;Our blog&#39;s theme started as the theme hugo-tufte but has sens
 <div class="row">
 <div class="col-md-6">
 <div class="thumbnail">
-<a href="/images/parrotlogo.png"> <img class = "img-responsive" src="http://livefreeordichotomize.com/images/parrotlogo.png" alt="New Logo" style="width:100%"> </img></a>
+<a href="/images/parrotlogo.png">
+<img class = "img-responsive" src="http://livefreeordichotomize.com/images/parrotlogo.png" alt="New Logo" style="width:100%">
+</img></a>
 <div class="caption">
 <p>
 That’s a pretty cool new logo.
@@ -154,7 +158,7 @@ That’s a pretty cool new logo.
 <div id="banner" class="section level2">
 <h2>Banner</h2>
 <p>Again, go into your <code>config.toml</code>, but this time you need to add a new key called <code>[params.banner]</code> and under that add a field <code>url</code> just like for the logo.</p>
-<p><label for="tufte-mn-ossyamayha" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-tufte-mn-ossyamayha" class="margin-toggle"><span class="marginnote"><strong>/config.toml</strong></span></p>
+<p><label for="tufte-mn-" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-" class="margin-toggle"><span class="marginnote"><strong>/config.toml</strong></span></p>
 <pre><code>[params.logo]
   url = &quot;http://bit.ly/2tNSEG4&quot;
   width = 50
@@ -163,11 +167,13 @@ That’s a pretty cool new logo.
   
 [params.banner]
   url = &quot;http://bit.ly/2sV7B6p&quot;</code></pre>
-<p><label for="tufte-mn-dpdsyrfmdh" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-tufte-mn-dpdsyrfmdh" class="margin-toggle"><span class="marginnote"><strong>Banner Size:</strong> The banner image defaults to being a 3:1 ratio of width to height, so if your image is that size it will be fully shown. Otherwise some will get cut off.</span></p>
+<p><label for="tufte-mn-" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-" class="margin-toggle"><span class="marginnote"><strong>Banner Size:</strong> The banner image defaults to being a 3:1 ratio of width to height, so if your image is that size it will be fully shown. Otherwise some will get cut off.</span></p>
 <div class="row">
 <div class="col-md-6">
 <div class="thumbnail">
-<a href="/images/newpannel.png"> <img class = "img-responsive" src="http://livefreeordichotomize.com/images/newpannel.png" alt="New Banner" style="width:100%"> </img></a>
+<a href="/images/newpannel.png">
+<img class = "img-responsive" src="http://livefreeordichotomize.com/images/newpannel.png" alt="New Banner" style="width:100%">
+</img></a>
 <div class="caption">
 <p>
 A network diagram?! I like your style.
@@ -181,8 +187,8 @@ A network diagram?! I like your style.
 <h2>Adding authors</h2>
 <p>If you want to have your very own custom bio at the bottom of your articles, go into your blog’s <code>data/</code> directory and add a file titled <code>authors.toml</code>. Inside this file you can fill in some information about the authors on your blog. This info will then show up automatically at the end of any article they write.</p>
 <p>In this include the following info (replacing in the obvious places).</p>
-<p><label for="tufte-mn-rhcutasljd" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-tufte-mn-rhcutasljd" class="margin-toggle"><span class="marginnote"><strong>/data/authors.toml</strong></span></p>
-<p><label for="tufte-mn-csoghqumfj" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-tufte-mn-csoghqumfj" class="margin-toggle"><span class="marginnote">If you don’t have all of the fields no worries, just don’t enter them and they will automatically be hidden from the bio. </span></p>
+<p><label for="tufte-mn-" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-" class="margin-toggle"><span class="marginnote"><strong>/data/authors.toml</strong></span></p>
+<p><label for="tufte-mn-" class="margin-toggle">⊕</label><input type="checkbox" id="tufte-mn-" class="margin-toggle"><span class="marginnote">If you don’t have all of the fields no worries, just don’t enter them and they will automatically be hidden from the bio. </span></p>
 <pre><code>[&quot;Party Parrot&quot;]
   name =  &quot;Mr. Parrot&quot;
   bio = &quot;This is my super awesome bio and stuff.&quot;
@@ -190,11 +196,13 @@ A network diagram?! I like your style.
   thumbnail = &quot;http://bit.ly/2sV7B6p&quot;
   twitter = &quot;https://twitter.com/&quot;
   github = &quot;https://github.com/nstrayer/tuftesque/&quot;</code></pre>
-<p>Make sure that the key <code>[&quot;Author Name&quot;]</code> is exactly as the name appears in the <code>author</code> field of your post’s header.</p>
+<p>Make sure that the key <code>["Author Name"]</code> is exactly as the name appears in the <code>author</code> field of your post’s header.</p>
 <div class="row">
 <div class="col-md-6">
 <div class="thumbnail">
-<a href="/images/partyparrotbio.png"> <img class = "img-responsive" src="http://livefreeordichotomize.com/images/partyparrotbio.png" alt="with a bio" style="width:100%"> </img></a>
+<a href="/images/partyparrotbio.png">
+<img class = "img-responsive" src="http://livefreeordichotomize.com/images/partyparrotbio.png" alt="with a bio" style="width:100%">
+</img></a>
 <div class="caption">
 <p>
 Author bios automatically show up if the author’s info is in <code>/data/authors.toml</code>
