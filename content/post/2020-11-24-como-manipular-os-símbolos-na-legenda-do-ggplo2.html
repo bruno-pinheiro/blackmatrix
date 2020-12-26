@@ -1,0 +1,114 @@
+---
+title: Como manipular os símbolos na legenda do ggplot2
+author: "Bruno Pinheiro"
+date: '2020-11-24'
+slug: como-manipular-os-símbolos-na-legenda-do-ggplot2
+categories: ["R"]
+tags: ["ggplot2", "dataviz", "legendas"] 
+excerpt: "Especificando direfentes geoms na legenda em gráficos construídos com ggplot2"
+math: yes
+meta: yes
+---
+
+<link href="2020-11-24-como-manipular-os-símbolos-na-legenda-do-ggplo2_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="2020-11-24-como-manipular-os-símbolos-na-legenda-do-ggplo2_files/anchor-sections/anchor-sections.js"></script>
+
+
+<div id="problema" class="section level3">
+<h3>Problema</h3>
+<p>Você criou um gráfico com <code>ggplot2</code> com mais de um tipo de <em>geom</em> (linha e ponto, por exemplo) e a legenda não corresponde às formas que compõem a visualização. É preciso melhorar a interpretabilidade e por isso você quer arrumar a legenda.</p>
+<p>O pacote ggplot2 é provavelmente o mais utilizado para visualização de dados no R. É um pacote muito robusto e com inúmeras possibilidades tanto gráficas como estéticas. Por meio de suas funções é possível plotar dados de forma muito simples. Algumas vezes, no entando, as definições padrões do ggplot não atendem necessidades específicas e então, no meio de tantas opções, as coisas podem ficar um tanto confusas.</p>
+<p>Muitas vezes, por exemplo, é necessário manipular os símbolos das legendas dos gráficos para garantir maior qualidade e objetividade visual. Não é algo complicado, mas já gastei um bom tempo pesquisando a respeito até conseguir descobrir uma forma eficiente de fazê-lo (o que só ocorreu realmente porque, para me ajudar, decidi ajudar um camarada no StackOverFlow).</p>
+<p>Aqui neste tutorial vou explicar como realizar esta tarefa.</p>
+</div>
+<div id="criar-os-dados" class="section level2">
+<h2>Criar os dados</h2>
+<p>Comecemos criando um conjunto de dados que possa expressar o problema.</p>
+<pre class="r"><code>library(MASS)
+library(dplyr)
+
+mu &lt;- rep(1.7, 2)
+sigma &lt;- matrix(.1, nrow=2, ncol=2) + diag(2)*.05
+data &lt;- mvrnorm(n=100, mu=mu, Sigma=sigma, empirical=TRUE)
+data[, 2] &lt;- data[, 2] * 45
+
+# criar data.frame
+df &lt;- data.frame(
+  altura = data[, 1],
+  peso = data[, 2],
+  tipo = c(rep(&quot;homem&quot;, 50), rep(&quot;mulher&quot;, 50))
+  ) %&gt;% tibble()
+
+df %&gt;% head %&gt;% knitr::kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">altura</th>
+<th align="right">peso</th>
+<th align="left">tipo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0.8984362</td>
+<td align="right">46.44958</td>
+<td align="left">homem</td>
+</tr>
+<tr class="even">
+<td align="right">1.9059384</td>
+<td align="right">92.31858</td>
+<td align="left">homem</td>
+</tr>
+<tr class="odd">
+<td align="right">1.2353071</td>
+<td align="right">71.46807</td>
+<td align="left">homem</td>
+</tr>
+<tr class="even">
+<td align="right">1.5985995</td>
+<td align="right">92.35341</td>
+<td align="left">homem</td>
+</tr>
+<tr class="odd">
+<td align="right">1.6063615</td>
+<td align="right">71.47294</td>
+<td align="left">homem</td>
+</tr>
+<tr class="even">
+<td align="right">1.5385208</td>
+<td align="right">81.60647</td>
+<td align="left">homem</td>
+</tr>
+</tbody>
+</table>
+<p>Nossos dados estão na forma de um data.frame com três colunas e 30 linhas. Digamos que trata-se realmente da evolução anual do preço médio anual do dólar em relação ao real e que queremos plotar um gráfico de série temporal da cotação média do dólar, tipo. E que queremos adicionar também um ponto num local específico do plot, representando o preço máximo do dólar no ano em que a média e o valor máximo ficaram mais distantes. Podemos fazer isso sem dificuldades com o ggplot.</p>
+</div>
+<div id="criar-o-gráfico" class="section level2">
+<h2>Criar o gráfico</h2>
+<p>É preciso carregar o pacote ggplot2.</p>
+<pre class="r"><code>library(ggplot2)
+
+theme_set(
+  theme_minimal(base_size = 13, base_family = &quot;sans&quot;)
+  )</code></pre>
+<p>Agora vamos plotar um gráfico com a série temporal em linha e um ponto correspondente a um valor do ano de 2006.</p>
+<pre class="r"><code>p1 &lt;- df %&gt;% 
+  ggplot() +
+  stat_smooth(aes(altura, peso, color=&quot;Reg line&quot;),
+              method=&quot;lm&quot;, se=FALSE) +
+  geom_point(aes(altura, peso, colour = tipo)) +
+  scale_colour_brewer(palette = &quot;Set1&quot;, NULL)
+p1</code></pre>
+<p><img src="/post/2020-11-24-como-manipular-os-s%C3%ADmbolos-na-legenda-do-ggplo2_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Já temos um gráfico bastante interessante, porém as legendas não estão adequadamente formatadas, de modo que tanto as linhas estão cortadas por um círculo como o ponto está cortado por uma linha. Queremos adequar os símbolos para que as linhas sejam representadas por linhas e o ponto apenas por um ponto.</p>
+<div id="manipular-símbolos-da-legenda" class="section level3">
+<h3>Manipular símbolos da legenda</h3>
+<p>Para conseguir a manipulação que desejamos, é preciso adicionar algumas especificações utilizando a função guides(), conforme indicado abaixo. Dentro dele indicamos o argumento color, e sobrescrevemos o mapeamento estético dos símbolos dentro de guide_legend(), passando os valores que definem o tipo de ponto pch e de linha linetype dentro de uma lista.</p>
+<pre class="r"><code>p1 +
+  guides(color = guide_legend(
+    override.aes = list(pch=c(16, 16, NA), linetype=c(0, 0, 1))
+    ))</code></pre>
+<p><img src="/post/2020-11-24-como-manipular-os-s%C3%ADmbolos-na-legenda-do-ggplo2_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Pronto, agora sim! O resultado é o gráfico que queríamos, com os símbolos da legenda corretamente formatados.</p>
+</div>
+</div>
