@@ -1,4 +1,4 @@
-baseurl = "/"
+baseurl = "https://bruno-pinheiro.github.io/blackmatrix/"
 publishDir = "docs"
 languageCode = "en-us"
 title = "A Hugo website"
